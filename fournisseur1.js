@@ -1,7 +1,7 @@
 // ==========================================================================
-// CONSOLE DISTRIBUTEUR - LOGIQUE DE SYNCHRONISATION FILTRÉE PAR FOURNISSEUR
-// ==========================================================================
-
+// CONSOLE DISTRIBUTEUR - LOGIQUE DE SYNCHR======
+ONISATION FILTRÉE PAR FOURNISSEUR
+// ====================================================================
 document.addEventListener("DOMContentLoaded", () => {
   
   // Sécurité d'accès : Si pas connecté ou pas fournisseur, retour direct
