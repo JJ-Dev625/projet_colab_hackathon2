@@ -274,7 +274,7 @@ function ajouterAuPanierDirect(id) {
 function ajouterRecetteAuPanier(id, titre, prix) {
   if (localStorage.getItem("user_connecte") !== "true") {
     alert("Oups ! Veuillez vous connecter pour acheter cette fiche recette.");
-    window.location.href = "connexion.html";
+    window.location.href = "login.html";
     return;
   }
 
