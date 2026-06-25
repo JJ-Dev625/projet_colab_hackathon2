@@ -109,6 +109,12 @@ const fichesRecettes = [
     prix: "2 000 FCFA",
     image: "./images/p2.png",
   },
+  {
+    id: "r3",
+    titre: "Brochettes de chenille",
+    prix: "2 000 FCFA",
+    image: "./images/p2.png",
+  },
 ];
 
 // 2. BASE DE DONNÉES DE PUBLICATIONS ÉPHÉMÈRES (CHARTE GRAPHIQUE)
@@ -244,7 +250,7 @@ function ajouterAuPanierDirect(id) {
     alert(
       "Oups ! Vous devez être connecté pour ajouter des articles à votre panier. 🇬🇦",
     );
-    window.location.href = "connexion.html";
+    window.location.href = "login.html";
     return;
   }
 
