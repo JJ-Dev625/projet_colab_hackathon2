@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyoni - Valorisation des Produits du Terroir Gabonais</title>
+    <!-- Chargement de FontAwesome pour les icônes (Loupe, panier, rouage...) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==========================================================================
+       1. EN-TÊTE (HEADER) & ACTIONS UTILISATEUR
+       ========================================================================== -->
+    <header class="main-header">
+        <div class="container header-flex">
+            <div class="logo">
+                <a href="index.html">Nyoni 🇬🇦</a>
+            </div>
+
+            <!-- Navigation Principale avec lien d'authentification et bouton Burger -->
+            <nav class="nav-bar" id="nav-links">
+                <a href="#produits">Boutique</a>
+                <a href="#recettes">Gastronomie</a>
+                <a href="login.html" id="nav-auth-btn"><i class="fas fa-user"></i> Connexion</a>
+            </nav>
+
+            <div class="header-actions">
+                <!-- Bouton d'accès au panier -->
+                <a href="paiement1.html" class="cart-icon-btn">
+                    <i class="fas fa-shopping-basket"></i> Panier (<span id="cart-count">0</span>)
+                </a>
+                
+                <!-- Déclencheur du menu responsive mobile -->
+                <button class="burger-menu" onclick="toggleMenu()" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+       2. RECHERCHE ET FILTRAGE AVANCÉ
+       ========================================================================== -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-flex">
+                <!-- Champ textuel avec loupe intégrée -->
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" oninput="filtrerProduits()" placeholder="Rechercher un produit (Miel, Odika, Champignons...)...">
+                </div>
+                
+                <!-- Menu déroulant des catégories pour filtrer le catalogue -->
+                <select id="filter-select" onchange="filtrerProduits()">
+                    <option value="tous">Toutes les catégories</option>
+                    <option value="miel">Miels Sauvages</option>
+                    <option value="chenille">Chenilles du Terroir</option>
+                    <option value="ver">Vers de Palmier</option>
+                    <option value="moucheron">Raretés (Moucherons)</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       3. BANNIÈRE HERO ET DIAPORAMA CHRONOMÉTRÉ EN ARRIÈRE-PLAN
+       ========================================================================== -->
+    <!-- La classe .hero-slider applique l'animation d'arrière-plan diapoNyoni définie dans ton CSS -->
+    <section class="hero-welcome hero-slider">
+        <div class="hero-content">
+            <span class="badge">Label Confiance Traçable 🐝</span>
+            <h1>Bienvenue sur la plateforme Nyoni</h1>
+            <p>Découvrez, cuisinez et commandez les plus précieux produits de la forêt équatoriale gabonaise. Une traçabilité garantie de la cueillette éco-responsable jusqu'à votre table.</p>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       4. BLOC D'ACTUALITÉS TOURNANTES (PILOTÉ PAR JAVASCRIPT)
+       ========================================================================== -->
+    <section class="section container" id="publications-container" style="display: none; padding-bottom: 10px;">
+        <!-- Cet élément accueille l'injection dynamique des publications éphémères -->
+        <div id="live-publication" class="publication-card"></div>
+    </section>
+
+    <!-- ==========================================================================
+       5. GRILLE DES PRODUITS VEDETTES
+       ========================================================================== -->
+    <section class="section container" id="produits">
+        <h2 class="section-title">Nos Produits Vedettes</h2>
+        <!-- Conteneur ciblé par afficherCatalogue() -->
+        <div class="grid" id="product-grid">
+            <!-- Injecté dynamiquement par JavaScript -->
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       6. BLOC GASTRONOMIE / FICHES RECETTES
+       ========================================================================== -->
+    <section class="section container" id="recettes">
+        <h2 class="section-title">Fiches Recettes &amp; Accompagnements</h2>
+        <!-- Conteneur ciblé par afficherRecettes() -->
+        <div class="grid" id="recipe-grid">
+            <!-- Injecté dynamiquement par JavaScript -->
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       7. PIED DE PAGE COMPLET & COMPOSANTS ANNEXES
+       ========================================================================== -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4 class="footer-title">À propos de Nyoni</h4>
+                <p>Nyoni est une vitrine numérique conçue pour valoriser le savoir-faire de nos communautés locales et simplifier l'accès aux produits forestiers non ligneux (PFNL) du Gabon en garantissant hygiène et traçabilité.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">Suivez l'aventure</h4>
+                <div class="footer-icons">
+                    <a href="https://facebook.com/nyoni241" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="mailto:contact@nyoni.ga" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+24107000000" title="Téléphone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nyoni Platform - Tous droits réservés. Vos produits locaux à portée de clic.
+        </div>
+    </footer>
+
+    <!-- Bouton flottant de retour rapide en haut de page -->
+    <button id="scroll-top-btn" onclick="remonterEnHaut()" title="Retour en haut de page">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Script logique contenant tes fonctions globales de catalogue et d'authentification -->
+    <script src="script1.js"></script>
+</body>
+</html>

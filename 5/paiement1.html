@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyoni - Finaliser ma Commande</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="paiement.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-flex">
+            <div class="logo">
+                <a href="index.html"><strong>Nyoni 🇬🇦</strong></a>
+            </div>
+            <div class="header-actions">
+                <a href="index.html" class="cart-icon-btn"><i class="fas fa-arrow-left"></i> Boutique</a>
+                <a href="fournisseur.html" class="nav-admin-link" title="Console Fournisseur"><i class="fas fa-cog"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="auth-wrapper">
+        <div class="auth-container">
+            <div class="auth-card">
+                
+                <div class="auth-header">
+                    <div class="auth-logo">🛒</div>
+                    <h1>Finaliser l'achat</h1>
+                    <p>Vos transactions sont cryptées et sécurisées au cœur de notre terroir.</p>
+                </div>
+
+                <form id="payment-form">
+                    
+                    <div class="form-group">
+                        <label for="client-name">Nom complet du destinataire *</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="client-name" required placeholder="Ex: Jean Junior">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="client-address">Adresse de livraison / Ville *</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-map-marker-alt input-icon"></i>
+                            <input type="text" id="client-address" required placeholder="Ex: Bikélé, Libreville">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="client-tel">Téléphone *</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fas fa-phone input-icon"></i>
+                                <input type="tel" id="client-tel" required placeholder="Ex: +241 077 00 00 00">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="client-email">Adresse e-mail *</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="client-email" required placeholder="Ex: client@gmail.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mode-livraison" style="color: var(--nyoni-green-dark);">Destination & Mode de livraison *</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-truck input-icon"></i>
+                            <select id="mode-livraison" required>
+                                <option value="" disabled selected>-- Choisissez votre zone --</option>
+                                <option value="local">🚗 Grand Libreville (Bikélé, Akanda) — 2 000 F</option>
+                                <option value="province">🚌 Expédition Provinces (Bus) — 5 000 F</option>
+                                <option value="international">✈️ International (Fret aérien / DHL) — 25 000 F</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="phytosanitary-alert">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        <span><strong>Note d'exportation :</strong> Nyoni s'occupe de l'obtention des certificats phytosanitaires obligatoires pour l'international.</span>
+                    </div>
+
+                    <h3 class="payment-methods-title">Mode de paiement</h3>
+                    
+                    <div class="payment-methods-list">
+                        <label class="payment-method-item">
+                            <input type="radio" name="payment-method" value="airtel" checked>
+                            <img src="./images/am.png" alt="Airtel Money">
+                            <span><strong style="color: #ff0000;">Airtel Money</strong> Mobile</span>
+                        </label>
+
+                        <label class="payment-method-item">
+                            <input type="radio" name="payment-method" value="moov">
+                            <img src="./images/mm.png" alt="Moov Money">
+                            <span><strong style="color: #0056b3;">Moov Money</strong> Flooz</span>
+                        </label>
+
+                        <label class="payment-method-item">
+                            <input type="radio" name="payment-method" value="card">
+                            <div class="card-icon-placeholder">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <span><strong>Carte Bancaire</strong> Visa / Mastercard</span>
+                        </label>
+                    </div>
+
+                    <div class="resume-panier">
+                        <div class="resume-row">
+                            <span>Sous-total articles :</span>
+                            <strong>7 000 FCFA</strong>
+                        </div>
+                        <div class="resume-row">
+                            <span>Frais d'expédition :</span>
+                            <strong id="frais-livraison">0 FCFA</strong>
+                        </div>
+                        <hr class="resume-divider">
+                        <div class="resume-row total-row">
+                            <span>Total général :</span>
+                            <strong id="total-commande">7 000 FCFA</strong>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-auth">
+                        <i class="fas fa-check-circle"></i> Confirmer et Payer
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4 class="footer-title">À propos de Nyoni</h4>
+                <p>Valorisation numérique des produits du terroir gabonais. Traçabilité et qualité de la forêt au consommateur.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">Suivez-nous</h4>
+                <div class="footer-icons">
+                    <a href="https://facebook.com/nyoni241" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="mailto:contact@nyoni.ga"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+24107000000"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nyoni Platform - Tous droits réservés.
+        </div>
+    </footer>
+
+    <script src="paiement1.js"></script>
+</body>
+</html>

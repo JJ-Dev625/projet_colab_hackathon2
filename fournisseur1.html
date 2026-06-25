@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nyoni - Console Distributeur</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="fournisseur.css">
+</head>
+<body>
+
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark"><i class="fas fa-shield-alt"></i></div>
+        <div class="brand-text">
+          <strong>Nyoni Hub</strong>
+          <span>Console distributeur local</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Navigation principale">
+        <button class="tab-btn active" data-target="onglet-liste">
+          <i class="fas fa-warehouse"></i>
+          <span>Stock & Suivi</span>
+        </button>
+
+        <button class="tab-btn" data-target="onglet-ajouter">
+          <i class="fas fa-plus-circle"></i>
+          <span>Ajouter Produit</span>
+        </button>
+
+        <button class="tab-btn" data-target="onglet-messages">
+          <i class="fas fa-comments"></i>
+          <span>Messages</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="mini-profile">
+          <div class="avatar">ND</div>
+          <div>
+            <strong>Distributeur</strong>
+            <small>En ligne</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Contenu principal -->
+    <div class="main-panel">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Tableau de bord</p>
+          <h1>Console Distributeur Local</h1>
+        </div>
+
+        <a href="index.html" class="btn-quit">
+          <i class="fas fa-arrow-left"></i>
+          <span>Quitter</span>
+        </a>
+      </header>
+
+      <main class="content">
+        <!-- Cartes statistiques -->
+        <section class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-icon"><i class="fas fa-box"></i></div>
+            <div>
+              <span class="stat-value" id="products-count">1</span>
+              <span class="stat-label">En vitrine</span>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon accent"><i class="fas fa-envelope"></i></div>
+            <div>
+              <span class="stat-value" id="messages-count">1</span>
+              <span class="stat-label">Message en attente</span>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon"><i class="fas fa-wallet"></i></div>
+            <div>
+              <span class="stat-value">145 000 F</span>
+              <span class="stat-label">Chiffre d'affaires</span>
+            </div>
+          </article>
+        </section>
+
+        <!-- Onglet liste -->
+        <section id="onglet-liste" class="tab-content active">
+          <div class="section-head">
+            <h2>Vos produits référencés</h2>
+          </div>
+
+          <div class="table-responsive">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Nom du produit</th>
+                  <th>Tarification & Quantité</th>
+                  <th>Provenance / Cueillette</th>
+                  <th>Filière</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="supplier-stock-list">
+                <tr id="row-1">
+                  <td data-label="Nom du produit"><b>Brochettes de Vers de Palmier</b></td>
+                  <td data-label="Tarification & Quantité">2 000 FCFA (24 pièces dispo)</td>
+                  <td data-label="Provenance / Cueillette">Kango</td>
+                  <td data-label="Filière"><span class="status-badge status-local">Filière Gabonaise</span></td>
+                  <td data-label="Action">
+                    <button class="btn-delete" data-id="row-1" aria-label="Supprimer ce produit">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Onglet ajout -->
+        <section id="onglet-ajouter" class="tab-content">
+          <div class="section-head">
+            <h2>Mettre une ressource en vente</h2>
+          </div>
+
+          <form id="add-product-form" class="product-form">
+            <div class="form-group full">
+              <label for="p-nom">Désignation de la ressource *</label>
+              <input type="text" id="p-nom" required placeholder="Ex: Miel pur d'Oyem (75cl)">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-prix">Prix d'achat direct (FCFA) *</label>
+                <input type="number" id="p-prix" required placeholder="Ex: 5000">
+              </div>
+
+              <div class="form-group">
+                <label for="p-stock">Stock initial disponible *</label>
+                <input type="number" id="p-stock" required placeholder="Ex: 10">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-tel">Contact téléphonique du collecteur *</label>
+                <input type="tel" id="p-tel" required placeholder="Ex: 077123456">
+              </div>
+
+              <div class="form-group">
+                <label for="p-loc">Lieu exact de collecte / capture *</label>
+                <input type="text" id="p-loc" required placeholder="Ex: Lastourville">
+              </div>
+            </div>
+
+            <div class="form-group full">
+              <label for="p-img">Preuve visuelle / image du produit *</label>
+              <input type="file" id="p-img" accept="image/*" required class="file-input">
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <i class="fas fa-paper-plane"></i>
+              <span>Mettre en vente</span>
+            </button>
+          </form>
+        </section>
+
+        <!-- Onglet messages -->
+        <section id="onglet-messages" class="tab-content">
+          <div class="section-head">
+            <h2>Messages clients</h2>
+          </div>
+
+          <div id="messages-list">
+            <!-- Message 1 -->
+            <article class="message-item unread">
+              <div class="msg-avatar">PM</div>
+              <div class="msg-body">
+                <div class="msg-top">
+                  <strong>Pierre Mba (Bikélé)</strong>
+                  <button class="btn-reply" data-target="reply-1">
+                    <i class="fas fa-reply"></i>
+                    Répondre
+                  </button>
+                </div>
+
+                <p>Bonjour, est-il possible de réserver 15 paquets de vers de palmier pour une livraison samedi matin ? Merci.</p>
+
+                <div class="reply-box" id="reply-1" hidden>
+                  <label for="reply-text-1">Votre réponse</label>
+                  <textarea id="reply-text-1" rows="4" placeholder="Écris ta réponse ici..."></textarea>
+
+                  <div class="reply-actions">
+                    <button type="button" class="btn-send-reply" data-message="Pierre Mba">
+                      <i class="fas fa-paper-plane"></i>
+                      Envoyer
+                    </button>
+
+                    <button type="button" class="btn-cancel-reply" data-target="reply-1">
+                      Annuler
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="fournisseur1.js" defer></script>
+</body>
+</html>

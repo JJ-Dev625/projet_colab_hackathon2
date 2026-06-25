@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyoni - Terroir Forestier Gabonais</title>
+    <!-- Icônes FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==========================================================================
+       1. EN-TÊTE (HEADER) OPTIMISÉ
+       ========================================================================== -->
+    <header class="main-header">
+        <div class="container header-flex">
+            
+            <!-- CÔTÉ GAUCHE : Logo + Menu Burger (au même niveau) -->
+            <div class="header-left-block">
+                <button class="burger-menu" onclick="toggleMenu()" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">
+                    <a href="index.html">Nyoni 🇬🇦</a>
+                </div>
+            </div>
+
+            <!-- MILIEU : Navigation principale (cachée en mobile, déployable) -->
+            <nav class="nav-bar" id="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="#a-propos">À propos</a>
+                <a href="#produits">Produits</a>
+                <a href="#recettes">Recettes</a>
+                <a href="#contact">Contact</a>
+                <a href="connexion.html" id="nav-auth-btn"><i class="fas fa-user"></i> Connexion</a>
+                <a href="fournisseur1.html" class="nav-admin-link" title="Console Fournisseur"><i class="fas fa-cog"></i></a>
+            </nav>
+
+            <!-- CÔTÉ DROIT : Barre de recherche + Panier à sa droite directe -->
+            <div class="header-right-block">
+                <!-- Zone de recherche compacte -->
+                <div class="search-header-wrapper">
+                    <i class="fas fa-search search-icon-header"></i>
+                    <input type="text" id="search-input" oninput="filtrerProduits()" placeholder="Rechercher...">
+                    
+                    <select id="filter-select" onchange="filtrerProduits()" class="filter-header-select">
+                        <option value="tous">Catégories</option>
+                        <option value="miel">Miels Sauvages</option>
+                        <option value="chenille">Chenilles</option>
+                        <option value="ver">Vers de Palmier</option>
+                        <option value="moucheron">Raretés</option>
+                    </select>
+                    
+                </div>
+
+                <!-- Panier (situé immédiatement à droite de la recherche) -->
+                <a href="paiement.html" class="cart-icon-btn">
+                    <i class="fas fa-shopping-basket"></i> <span class="cart-text">Panier</span> (<span id="cart-count">0</span>)
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+       2. HERO / BIENVENUE & DIAPORAMA ANIMÉ
+       ========================================================================== -->
+    <section class="hero-welcome hero-slider">
+        <div class="hero-content">
+            <span class="badge">Label Confiance Traçable 🐝</span>
+            <h1>Bienvenue sur la plateforme Nyoni</h1>
+            <p>Découvrez, cuisinez et commandez les plus précieux produits de la forêt équatoriale gabonaise. Une traçabilité garantie de la cueillette éco-responsable jusqu'à votre table.</p>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       3. SECTION À PROPOS
+       ========================================================================== -->
+    <section class="section container" id="a-propos">
+        <div class="about-box">
+            <h2 class="section-title">À propos de Nyoni</h2>
+            <p>Nyoni est une vitrine numérique et une initiative éco-responsable dédiée à la valorisation, la commercialisation et la traçabilité des produits phares du terroir forestier gabonais (Miels sauvages, Odika, champignons, produits forestiers non ligneux).</p>
+            <p style="margin-top: 10px;">En connectant directement les cueilleurs traditionnels des provinces (Ogooué-Ivindo, Woleu-Ntem, Ngounié...) aux consommateurs, nous garantissons la pureté des produits, le respect des normes d'hygiène et une juste rémunération des acteurs locaux au cœur de nos forêts.</p>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       4. BLOC D'ACTUALITÉS / PUBS TOURNANTES
+       ========================================================================== -->
+        <section class="section container" id="publications-container">
+        <h3 class="pub-section-title"><i class="fas fa-bullhorn"></i> Les Offres du Moment</h3>
+        
+        <div class="ads-carousel-wrapper">
+            <div class="publication-card active-ad" id="ad-1">
+                <div class="pub-badge">PROMO TERROIR 🍯</div>
+                <div class="pub-content">
+                    <h4>L'Or Liquide du Woleu-Ntem à prix réduit !</h4>
+                    <p>Pour tout achat de deux pots de Miel Sauvage d'Oyem (500g), le troisième pot est à <strong>-50%</strong>. Offre valable dans la limite des stocks disponibles chez nos cueilleurs partenaires.</p>
+                </div>
+                <a href="#produits" class="btn btn-primary btn-pub">J'en profite</a>
+            </div>
+
+            <div class="publication-card" id="ad-2">
+                <div class="pub-badge">EXCLUSIVITÉ NYONI 🇬🇦</div>
+                <div class="pub-content">
+                    <h4>Tout savoir sur l'Odika de Ndendé</h4>
+                    <p>Découvrez les secrets de râpage et de conservation de notre Odika pur certifié. Consultez notre fiche recette spéciale "Poulet à l'Odika traditionnel" dans l'onglet Gastronomie.</p>
+                </div>
+                <a href="#recettes" class="btn btn-primary btn-pub">Voir la recette</a>
+            </div>
+
+            <div class="publication-card" id="ad-3">
+                <div class="pub-badge">LOGISTIQUE RAPIDE 🚀</div>
+                <div class="pub-content">
+                    <h4>Livraison Express dans le Grand Libreville</h4>
+                    <p>Bonne nouvelle ! Les livraisons sont désormais disponibles jusqu'à <strong>Bikélé, Ntoum et Owendo</strong> en moins de 24 heures. Vos produits forestiers frais, directement à votre porte.</p>
+                </div>
+                <a href="#contact" class="btn btn-secondary btn-pub" style="background: #ffb703; color: black;">Zones de livraison</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==========================================================================
+       5. CATALOGUE DYNAMIQUE DES PRODUITS VEDETTES
+       ========================================================================== -->
+    <section class="section container" id="produits">
+        <h2 class="section-title">Nos Produits Vedettes</h2>
+        <div class="grid" id="product-grid">
+            <!-- Injecté dynamiquement par script.js -->
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       6. BLOC GASTRONOMIE / FICHES RECETTES
+       ========================================================================== -->
+    <section class="section container" id="recettes">
+        <h2 class="section-title">Fiches Recettes &amp; Accompagnements</h2>
+        <div class="grid" id="recipe-grid">
+            <!-- Injecté dynamiquement par script.js -->
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       7. PIED DE PAGE COMPLET (FOOTER)
+       ========================================================================== -->
+    <footer class="main-footer" id="contact">
+        <div class="container footer-grid">
+            <div>
+                <h4 class="footer-title">Nyoni Plateforme</h4>
+                <p>Valorisation et préservation de la biodiversité forestière du Gabon. Qualité supérieure garantie de la source à votre assiette.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">Suivez l'aventure / Contact</h4>
+                <p>Des questions ou partenariats ? Écrivez-nous ou rejoignez-nous sur nos réseaux communautaires :</p>
+                <div class="footer-icons">
+                    <a href="https://facebook.com/nyoni241" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://tiktok.com/@nyoni241" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="mailto:contact@nyoni.ga" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nyoni Platform - Tous droits réservés. Le terroir forestier gabonais à portée de clic.
+        </div>
+    </footer>
+
+    <!-- Bouton Retour En Haut -->
+    <button id="scroll-top-btn" onclick="remonterEnHaut()" title="Retour en haut de page">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script1.js"></script>
+</body>
+</html>

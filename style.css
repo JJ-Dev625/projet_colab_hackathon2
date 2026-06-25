@@ -1,0 +1,416 @@
+/* ==========================================================================
+   1. CONFIGURATION GLOBALE & REINITIALISATION
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fdfbf7;
+    color: #212529;
+    line-height: 1.5;
+}
+
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   2. EN-TÊTE (HEADER) & LIEN ADMIN SUBTILE
+   ========================================================================== */
+.main-header {
+    background-color: #ffffff;
+    padding: 15px 0;
+    border-bottom: 2px solid #0f5132;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #0f5132;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin-left: 15px;
+    transition: color 0.2s ease;
+}
+
+.nav-bar a:hover {
+    color: #0f5132;
+}
+
+/* Bouton admin discret et subtil */
+.nav-bar a.nav-admin-link {
+    color: #6c757d;
+    font-weight: normal;
+    font-size: 0.9rem;
+    border-left: 1px solid #dee2e6;
+    padding-left: 15px;
+}
+
+.nav-bar a.nav-admin-link:hover {
+    color: #212529;
+}
+
+.cart-icon-btn {
+    text-decoration: none;
+    background-color: #ebf0ed;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #0f5132;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   3. BARRE DE RECHERCHE & HERO (AVEC DIAPORAMA CHRONOMÉTRÉ)
+   ========================================================================== */
+.search-section {
+    background-color: #f2efe8;
+    padding: 20px 0;
+}
+
+.search-flex {
+    display: flex;
+    gap: 10px;
+}
+
+.search-flex input, 
+.search-flex select {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.hero-welcome {
+    position: relative;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    overflow: hidden;
+    background-color: #0f5132;
+}
+
+/* Filtre assombrissant pour préserver le contraste du texte */
+.hero-welcome::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 2.6rem;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #ffb703;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.badge {
+    background-color: #ffb703;
+    color: #000;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* DIAPORAMA DE LA RACINE DU PROJET (SORT DU DOSSIER CSS VIA ../) */
+.hero-slider::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: diapoNyoni 60s infinite ease-in-out; 
+}
+
+@keyframes diapoNyoni {
+    0%, 16% { background-image: url('./images/mh.png'); }
+    20%, 36% { background-image: url('./images/3.png'); }
+    40%, 56% { background-image: url('./images/2.png'); }
+    60%, 76% { background-image: url('../images/m2.png'); }
+    80%, 96% { background-image: url('../images/6.jpeg'); }
+    100% { background-image: url('../images/4.png'); }
+}
+
+/* ==========================================================================
+   4. GRILLE DES PRODUITS (ACCUEIL) & BLOCS INFO
+   ========================================================================== */
+.section {
+    padding: 40px 0;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #0f5132;
+    margin-bottom: 25px;
+    border-left: 5px solid #ffb703;
+    padding-left: 15px;
+}
+
+.about-box, .promo-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.quantity-tag {
+    font-size: 0.85rem;
+    margin: 6px 0;
+}
+
+.card-footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #0f5132;
+}
+
+/* ==========================================================================
+   5. COMPOSANTS BOUTONS SIMPLES
+   ========================================================================== */
+.btn { 
+    display: inline-block;
+    padding: 10px 18px; 
+    border: none; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    text-align: center; 
+    text-decoration: none; 
+    font-size: 0.95rem;
+}
+
+.btn-primary { 
+    background-color: #ffb703; 
+    color: black; 
+}
+
+.btn-secondary {
+    background-color: #0f5132;
+    color: white;
+}
+
+/* ==========================================================================
+   6. FOOTER COMPLET
+   ========================================================================== */
+.main-footer { 
+    background-color: #1a1a1a; 
+    color: #ffffff; 
+    padding: 50px 0 20px 0; 
+    margin-top: 60px; 
+    border-top: 5px solid #ffb703; 
+}
+
+.footer-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 40px; 
+}
+
+.footer-title { 
+    color: #ffb703; 
+    margin-bottom: 20px; 
+    font-size: 1.1rem; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+}
+
+.main-footer p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.footer-icons { 
+    display: flex; 
+    gap: 20px; 
+    font-size: 1.6rem; 
+    margin-top: 15px; 
+}
+
+.footer-icons a { 
+    color: white; 
+    text-decoration: none; 
+    transition: transform 0.2s, color 0.2s; 
+}
+
+.footer-icons a:hover { 
+    color: #ffb703; 
+    transform: scale(1.15); 
+}
+
+.footer-bottom { 
+    text-align: center; 
+    margin-top: 40px; 
+    padding-top: 20px; 
+    border-top: 1px solid #333; 
+    font-size: 0.85rem; 
+    color: #888; 
+}
+
+/* ==========================================================================
+   7. SÉCURITÉS RESPONSIVES ET BOUTON RETOUR EN HAUT
+   ========================================================================== */
+@media (max-width: 850px) {
+    .search-flex { flex-direction: column; }
+    .hero-content h1 { font-size: 1.8rem; }
+    
+    .nav-bar a.nav-admin-link {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .burger-menu { 
+        display: block !important; 
+        background: none; border: none; font-size: 1.6rem; color: #0f5132; cursor: pointer;
+    }
+
+    .nav-bar { 
+        display: none; flex-direction: column; position: absolute; top: 70px; left: 0; 
+        width: 100%; background-color: #ffffff; padding: 20px; border-bottom: 3px solid #0f5132; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 999;
+    }
+
+    .nav-bar.open { display: flex !important; }
+    .nav-bar a { margin: 12px 0 !important; display: block; font-size: 1.1rem; }
+}
+
+.burger-menu { display: none; }
+
+#scroll-top-btn { 
+    display: none; position: fixed; bottom: 25px; right: 25px; background-color: #0f5132; 
+    color: #ffffff; border: 2px solid #ffb703; padding: 12px 16px; border-radius: 8px; 
+    cursor: pointer; font-size: 1rem; font-weight: bold; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    z-index: 1000; transition: background-color 0.2s, transform 0.2s;
+}
+
+#scroll-top-btn:hover { background-color: #ffb703; color: #000; transform: scale(1.05); }
+
+/* Wrapper pour inclure la loupe à l'intérieur du champ de saisie */
+.search-input-wrapper {
+    position: relative;
+    flex: 2; /* Donne plus de largeur à l'input qu'au select */
+}
+
+.search-input-wrapper input {
+    padding-left: 40px !important; /* Laisse la place pour l'icône à gauche */
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 1.1rem;
+    pointer-events: none; /* L'icône ne bloque pas le clic sur l'input */
+}
+
+/* CARTE PUBLICATION - ALIGNÉE SUR LA CHARTE GRAPHIQUE */
+.publication-card {
+    background-color: #0f5132; /* Vert Forêt Deep original Nyoni */
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 6px solid #ffb703; /* Or Territoire */
+    box-shadow: 0 4px 15px rgba(15, 81, 50, 0.15);
+    animation: fadeInPub 0.5s ease-in-out;
+}
+
+@keyframes fadeInPub {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
