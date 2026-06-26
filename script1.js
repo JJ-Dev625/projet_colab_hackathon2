@@ -2,19 +2,10 @@
 // CONFIGURATION ET INITIALISATION DES DONNÉES
 // ==========================================================================
 
-// 1. CATALOGUE COMPLET DES 10 PRODUITS INITIAUX
+// 1. CATALOGUE COMPLET DES 05 PRODUITS INITIAUX
 const catalogueInitial = [
   {
     id: 1,
-    nom: "Chenilles de l'Ivindo",
-    type: "chenille",
-    origine: "Ogooué-Ivindo",
-    prix: "10 000 FCFA",
-    stock: 40,
-    image: "images/6.png",
-  },
-  {
-    id: 2,
     nom: "Chenilles de l'Arbre à Pain",
     type: "chenille",
     origine: "Woleu-Ntem",
@@ -23,7 +14,7 @@ const catalogueInitial = [
     image: "images/4.png",
   },
   {
-    id: 3,
+    id: 2,
     nom: "Chenilles Rouges de l'Ogooué",
     type: "chenille",
     origine: "Ogooué-Lolo",
@@ -31,17 +22,9 @@ const catalogueInitial = [
     stock: 22,
     image: "images/3.png",
   },
+
   {
-    id: 4,
-    nom: "Vers à Soie Secs de Palmier",
-    type: "ver",
-    origine: "Moyen-Ogooué",
-    prix: "10 000 FCFA",
-    stock: 15,
-    image: "images/2.png",
-  },
-  {
-    id: 5,
+    id: 3,
     nom: "Vers à Soie Vivants de la Nyanga",
     type: "ver",
     origine: "Nyanga",
@@ -50,7 +33,7 @@ const catalogueInitial = [
     image: "images/7.png",
   },
   {
-    id: 6,
+    id: 4,
     nom: "Miel Pur Sauvage Extrait à Froid",
     type: "miel",
     origine: "Woleu-Ntem",
@@ -58,35 +41,9 @@ const catalogueInitial = [
     stock: 50,
     image: "images/m.png",
   },
+
   {
-    id: 7,
-    nom: "Miel Ambré de Ndendé",
-    type: "miel",
-    origine: "Ngounié",
-    prix: "20 000 FCFA",
-    stock: 12,
-    image: "images/m1.png",
-  },
-  {
-    id: 8,
-    nom: "Miel de Savane Doré",
-    type: "miel",
-    origine: "Haut-Ogooué",
-    prix: "10 000 FCFA",
-    stock: 30,
-    image: "images/m2.png",
-  },
-  {
-    id: 9,
-    nom: "Miel de Moucherons de Kango (Rare)",
-    type: "miel",
-    origine: "Estuaire",
-    prix: "25 000 FCFA",
-    stock: 8,
-    image: "images/m2.png",
-  },
-  {
-    id: 10,
+    id: 5,
     nom: "Élixir de Moucheron de Mandji",
     type: "moucheron",
     origine: "Ogooué-Maritime",
